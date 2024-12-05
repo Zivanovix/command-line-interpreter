@@ -3,7 +3,7 @@
 
 #include "Collection.h"
 #include "Command.h"
-#include <iostream>
+
 
 
 
@@ -12,7 +12,7 @@ class CommandManager {
 public:
 	static CommandManager* Instance();
 	void registerCommand (Command* com);
-	void executeCommand(std::string cmdName,std::string cmdOption, Collection<std::string>* cmdArguments, bool hasPreviousCmd, bool hasNextCmd);
+	void executeCommand(std::string cmdName,std::string cmdOption, Collection<std::string>* cmdArguments);
 	void printCommands();
 private:
 	// Constructor, Singleton DP.

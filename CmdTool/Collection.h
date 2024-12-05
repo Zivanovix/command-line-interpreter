@@ -18,7 +18,7 @@ public:
 	//adds an element at the end
 	void add(T val);
 
-	//void print();
+	void print();
 
 	size_t getSize() { return size; }
 
@@ -70,16 +70,16 @@ void Collection<T>::add(T val) {
 	++size;
 }
 
-//template<typename T>
-//void Collection<T>::print()
-//{
-//	CollectionElement* current = head;
-//	while (current) {
-//		std::cout << current->value->getName() << std::endl;
-//		current = current->next;
-//	}
-//	std::cout << std::endl;
-//}
+template<typename T>
+void Collection<T>::print()
+{
+	CollectionElement* current = head;
+	while (current) {
+		std::cout << current->value << " ";
+		current = current->next;
+	}
+	std::cout << std::endl;
+}
 
 template<typename T>
 T& Collection<T>::Iterator::next() {

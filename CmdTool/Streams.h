@@ -9,8 +9,8 @@ class InputStream {
 
 public:
 	virtual std::string read() = 0;
-	virtual std::string readLine() { return " "; }
-	//virtual std::string readLine() = 0;
+	virtual std::string readLine() = 0;
+	virtual ~InputStream() = default;
 };
 
 
@@ -19,6 +19,7 @@ class FileInputStream : public InputStream {
 public:
 	FileInputStream(std::string _location);
 	virtual std::string read();
+	virtual std::string readLine() { return " "; }
 private:
 	std::ifstream inputFile;
 	std::string location;
@@ -38,6 +39,7 @@ class StringInputStream : public InputStream {
 public:
 	StringInputStream(std::string sourceString);
 	virtual std::string read();
+	virtual std::string readLine() { return " "; }
 	bool hasNextWord();
 private:
 	std::string bufferString;
@@ -51,6 +53,7 @@ class OutputStream {
 public:
 	virtual void write(std::string& text) = 0;
 	virtual void writeLine(std::string& text) {};
+	virtual ~OutputStream() = default;
 };
 
 

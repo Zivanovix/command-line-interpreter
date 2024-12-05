@@ -24,12 +24,11 @@ std::string ConsoleInputStream::read()
 	std::string buffer;
 	char c;
 
-	//std::cout << std::endl;
 	while (std::cin.get(c)) {
 		buffer += c;
 	}
 	std::cin.clear();
-
+	buffer.pop_back();
 	return buffer;
 }
 

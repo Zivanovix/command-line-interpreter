@@ -133,6 +133,7 @@
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="DateCommand.cpp" />
     <ClCompile Include="EchoCommand.cpp" />
+    <ClCompile Include="InputStreamFactory.cpp" />
     <ClCompile Include="MainController.cpp" />
     <ClCompile Include="Parsers.cpp" />
     <ClCompile Include="Streams.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="DateCommand.h" />
     <ClInclude Include="EchoCommand.h" />
+    <ClInclude Include="InputStreamFactory.h" />
     <ClInclude Include="MainController.h" />
     <ClInclude Include="Parsers.h" />
     <ClInclude Include="Streams.h" />

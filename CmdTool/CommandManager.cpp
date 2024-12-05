@@ -1,6 +1,6 @@
 #include "CommandManager.h"
-
-
+#include "Streams.h"
+#include "InputStreamFactory.h"
 
 CommandManager* CommandManager::Instance() {
 	static CommandManager instance;
@@ -14,17 +14,25 @@ void CommandManager::registerCommand(Command* com) {
 	}
 }
 
-void CommandManager::executeCommand(std::string cmdName, std::string cmdOption, Collection<std::string>* cmdArguments, bool hasPreviousCmd, bool hasNextCmd)
+void CommandManager::executeCommand(std::string cmdName, std::string cmdOption, Collection<std::string>* cmdArguments)
 {
 	auto iterator = commands.getIterator();
 	while (iterator.hasNext()) {
-
 		Command* command = iterator.next();
 		if (command->getName() == cmdName) {
-			command->execute(cmdOption, cmdArguments, hasPreviousCmd, hasNextCmd);
-			break;
+
+			InputStream* inStream = InputStreamFactory::createInputStream(command->getInputStreamGroup(), cmdArguments, command->getMinNumOfArgs());
+			OutputStream* defaultOutStream = new ConsoleOutputStream();
+
+			command->execute(inStream, defaultOutStream, cmdOption, cmdArguments);
+
+			delete inStream;
+			delete defaultOutStream;
+
+			return;
 		}
 	}
+	throw std::runtime_error("No command named " + cmdName);
 }
 
 

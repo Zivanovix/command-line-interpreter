@@ -3,7 +3,7 @@
 #include <sstream>
 #include <ctime>
 
-TimeCommand::TimeCommand() : Command("time") {}
+TimeCommand::TimeCommand() : Command("time", InputStreamGenerationGroup::None) {}
 
 std::string TimeCommand::process(std::string inputString, std::string option)
 {
@@ -25,13 +25,4 @@ std::string TimeCommand::process(std::string inputString, std::string option)
     std::stringstream ss;
     ss << std::put_time(&localtime, format.c_str());
     return ss.str();
-}
-
-InputStream* TimeCommand::createInputStream(Collection<std::string>* arguments, bool hasPreviousCmd)
-{
-    if (arguments->getSize() > 0) {
-        throw std::runtime_error("Time command has no arguments");
-    }
-    //date does not work with a sequence of characters
-    return new StringInputStream("");
 }

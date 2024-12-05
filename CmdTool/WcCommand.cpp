@@ -1,7 +1,7 @@
 #include "WcCommand.h"
 
 
-WcCommand::WcCommand() : Command("wc") {}
+WcCommand::WcCommand() : Command("wc", InputStreamGenerationGroup::Mixed) {}
 
 std::string WcCommand::process(std::string inputString, std::string option)
 {

@@ -1,6 +1,6 @@
 #include "EchoCommand.h"
 
-EchoCommand::EchoCommand() : Command("echo") {}
+EchoCommand::EchoCommand() : Command("echo", InputStreamGenerationGroup::Mixed) {}
 
 std::string EchoCommand::process(std::string inputString, std::string option)
 {

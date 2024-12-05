@@ -3,7 +3,7 @@
 #include <ctime>
 #include <iomanip>
 
-DateCommand::DateCommand() : Command("date") {}
+DateCommand::DateCommand() : Command("date", InputStreamGenerationGroup::None) {}
 
 std::string DateCommand::process(std::string inputString, std::string option)
 {
@@ -27,13 +27,6 @@ std::string DateCommand::process(std::string inputString, std::string option)
     return ss.str();
 }
 
-InputStream* DateCommand::createInputStream(Collection<std::string>* arguments, bool hasPreviousCmd)
-{
-	if (arguments->getSize() > 0) {
-		throw std::runtime_error("Date command has no arguments");
-	}
-	//date does not work with a sequence of characters
-	return new StringInputStream("");
-}
+
 
 

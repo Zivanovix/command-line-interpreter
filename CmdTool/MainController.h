@@ -6,7 +6,7 @@
 class MainController
 {
 public:
-	MainController(std::string _commandPromptChar, InputStream* _inStream, OutputStream* _outStream, IParser* _parser);
+	MainController(InputStream* _inStream, OutputStream* _outStream, IParser* _parser, std::string _commandPromptChar = "$ ");
 	void run();
 private:
 	IParser* parser;

@@ -10,7 +10,6 @@ class DateCommand : public Command{
 public:
 	DateCommand();
 	virtual std::string process(std::string inputString, std::string option);
-	virtual InputStream* createInputStream(Collection<std::string>* arguments, bool hasPreviousCmd);
 };
 
 #endif

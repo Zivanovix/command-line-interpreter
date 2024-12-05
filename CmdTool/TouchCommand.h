@@ -11,7 +11,7 @@ class TouchCommand : public Command {
 public:
 	TouchCommand();
 	virtual std::string process(std::string inputString, std::string option);
-	virtual InputStream* createInputStream(Collection<std::string>* arguments, bool hasPreviousCmd);
+
 protected:
 	virtual std::string getExtension(std::string fileName);
 private:

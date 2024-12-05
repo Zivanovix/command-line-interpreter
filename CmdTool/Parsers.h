@@ -2,23 +2,19 @@
 #define Parsers_h
 
 #include <string>
+#include "Collection.h"
 
 class IParser {
 public:
-	virtual void parse(std::string& line, std::string& cmdName, std::string& cmdOpt, std::string& cmdArg) = 0;
+	virtual void parse(std::string& line, std::string& cmdName, std::string& cmdOpt, Collection<std::string>* cmdArguments) = 0;
 };
 
-class StandardParser : public IParser {
-public:
-	virtual void parse(std::string& line, std::string& cmdName, std::string& cmdOpt, std::string& cmdArg);
-};
-class NiceParser : public IParser {
-public:
-	virtual void parse(std::string& line, std::string& cmdName, std::string& cmdOpt, std::string& cmdArg);
-};
 class AdvancedParser : public IParser {
 public:
-	virtual void parse(std::string& line, std::string& cmdName, std::string& cmdOpt, std::string& cmdArg);
+	virtual void parse(std::string& line, std::string& cmdName, std::string& cmdOpt, Collection<std::string>* cmdArguments);
+
+protected:
+	virtual void assignToken(std::string& cmdName, std::string& cmdOpt, Collection<std::string>* cmdArguments, std::string& currentToken, int& cntReadTokens);
 };
 
 #endif
